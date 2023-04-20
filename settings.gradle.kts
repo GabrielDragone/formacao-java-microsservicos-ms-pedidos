@@ -1,1 +1,1 @@
-rootProject.name = "ms-pedidos"
+rootProject.name = "formacao-java-microsservicos-ms-pedidos"

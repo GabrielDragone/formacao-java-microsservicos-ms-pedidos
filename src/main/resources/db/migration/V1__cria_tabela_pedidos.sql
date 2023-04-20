@@ -1,0 +1,5 @@
+CREATE TABLE pedidos (
+  id SERIAL PRIMARY KEY NOT NULL,
+  data_hora TIMESTAMP WITH TIME ZONE NOT NULL,
+  status varchar(255) NOT NULL
+);
