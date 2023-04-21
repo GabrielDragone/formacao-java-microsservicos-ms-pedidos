@@ -4,8 +4,8 @@ import br.com.gabrieldragone.mspedidos.enum.Status
 import java.time.LocalDateTime
 
 data class PedidoDto(
-    val id: Long,
-    val dataHora: LocalDateTime,
-    val status: Status,
-    val itens: List<ItemDoPedidoDto> = emptyList()
+    var id: Long? = null,
+    var dataHora: LocalDateTime = LocalDateTime.now(),
+    var status: Status? = Status.REALIZADO,
+    var itens: List<ItemDoPedidoDto> = emptyList()
 )

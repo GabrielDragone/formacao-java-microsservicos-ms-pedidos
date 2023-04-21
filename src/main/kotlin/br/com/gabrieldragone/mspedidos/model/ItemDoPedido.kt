@@ -9,11 +9,11 @@ import jakarta.validation.constraints.Positive
 data class ItemDoPedido(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    var id: Long,
     @NotNull
     @Positive
-    val quantidade: Int,
-    val descricao: String,
+    var quantidade: Int,
+    var descricao: String,
     @ManyToOne(optional = false)
     var pedido: Pedido
 )

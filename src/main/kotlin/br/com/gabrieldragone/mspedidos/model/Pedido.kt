@@ -12,9 +12,9 @@ data class Pedido (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
     @NotNull
-    var dataHora: LocalDateTime,
+    var dataHora: LocalDateTime = LocalDateTime.now(),
     @NotNull @Enumerated(EnumType.STRING)
     var status: Status,
     @OneToMany(cascade = arrayOf(CascadeType.PERSIST), mappedBy = "pedido")
-    val itens: List<ItemDoPedido> = emptyList()
+    var itens: List<ItemDoPedido> = emptyList()
 )

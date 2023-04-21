@@ -3,6 +3,7 @@ package br.com.gabrieldragone.mspedidos.service
 import br.com.gabrieldragone.mspedidos.dto.PedidoDto
 import br.com.gabrieldragone.mspedidos.dto.StatusDto
 import br.com.gabrieldragone.mspedidos.enum.Status
+import br.com.gabrieldragone.mspedidos.model.ItemDoPedido
 import br.com.gabrieldragone.mspedidos.model.Pedido
 import br.com.gabrieldragone.mspedidos.repository.PedidoRepository
 import jakarta.persistence.EntityNotFoundException
@@ -33,11 +34,10 @@ class PedidoService(
     fun criarPedido(dto: PedidoDto): PedidoDto {
         var novoPedido = modelMapper.map(dto, Pedido::class.java)
 
-        novoPedido.dataHora = LocalDateTime.now()
-        novoPedido.status = Status.REALIZADO
-        novoPedido.itens.forEach{
+        novoPedido.itens.forEach {
             item -> item.pedido = novoPedido
         }
+
         novoPedido = pedidoRepository.save(novoPedido)
 
         return modelMapper.map(novoPedido, PedidoDto::class.java)

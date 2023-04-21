@@ -24,7 +24,7 @@ class PedidoController(private val pedidoService: PedidoService) {
         return pedidoService.obterTodos()
     }
 
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     fun obterPorId(@PathVariable @NotNull id: Long): ResponseEntity<PedidoDto> {
         return ResponseEntity.ok(pedidoService.obterPorId(id))
     }
