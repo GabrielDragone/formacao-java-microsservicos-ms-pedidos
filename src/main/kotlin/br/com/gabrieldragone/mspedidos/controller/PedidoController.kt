@@ -5,6 +5,7 @@ import br.com.gabrieldragone.mspedidos.dto.StatusDto
 import br.com.gabrieldragone.mspedidos.service.PedidoService
 import jakarta.validation.Valid
 import jakarta.validation.constraints.NotNull
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -48,6 +49,11 @@ class PedidoController(private val pedidoService: PedidoService) {
     fun aprovarPagamento(@PathVariable @NotNull id: Long): ResponseEntity<Unit> {
         pedidoService.aprovarPagamentoPedido(id)
         return ResponseEntity.ok().build()
+    }
+
+    @GetMapping("/porta") // Utilizado para testarmos a porta a aplicação. Está trabalhando diretamente com a config eureka.instance.instance-id dentro do properties:
+    fun retornarPorta(@Value("\${local.server.port}") porta: String): String {
+        return "Aplicação rodando na porta $porta"
     }
 
 }
